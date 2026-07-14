@@ -9,10 +9,5 @@
       "source": "/(.*)",
       "destination": "/server/index.js"
     }
-  ],
-  "functions": {
-    ".output/server/index.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  ]
 }

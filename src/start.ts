@@ -1,22 +1,18 @@
-import { createStart, createMiddleware } from "@tanstack/react-start";
+import { QueryClient } from "@tanstack/react-query";
+import { createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
 
-import { renderErrorPage } from "./lib/error-page";
+const queryClient = new QueryClient();
 
-const errorMiddleware = createMiddleware().server(async ({ next }) => {
-  try {
-    return await next();
-  } catch (error) {
-    if (error != null && typeof error === "object" && "statusCode" in error) {
-      throw error;
-    }
-    console.error(error);
-    return new Response(renderErrorPage(), {
-      status: 500,
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
-  }
+const router = createRouter({
+  routeTree,
+  context: { queryClient },
 });
 
-export const startInstance = createStart(() => ({
-  requestMiddleware: [errorMiddleware],
-}));
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+export default router;

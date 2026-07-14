@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -18,9 +17,9 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <p className="eyebrow">Beyond the Wall</p>
         <h1 className="mt-4 font-display text-7xl text-gold-gradient">404</h1>
-        <h2 className="mt-4 font-serif text-2xl text-foreground">This path is unmapped</h2>
+        <h2 className="mt-4 font-serif text-2xl text-foreground">Beyond the Realm</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The realm you seek does not exist in the chronicles.
+          The chronicles you seek do not exist in this realm.
         </p>
         <div className="mt-8">
           <Link to="/" className="btn-royal">Return to the Realm</Link>
@@ -33,14 +32,11 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="eyebrow">The Ravens Fell Silent</p>
+        <p className="eyebrow">The Magic Failed</p>
         <h1 className="mt-4 font-serif text-2xl text-foreground">This page did not load</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something disturbed the currents. Try again or return home.
@@ -64,11 +60,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Elden Sovereign — A Realm Forged in Blood, A Crown Claimed in Fire" },
-      { name: "description", content: "An epic cinematic fantasy saga of dragons, kingdoms, and shattered crowns. Enter the realm of Elden Sovereign." },
-      { name: "author", content: "Elden Sovereign Studios" },
-      { property: "og:title", content: "Elden Sovereign — Epic Fantasy Saga" },
-      { property: "og:description", content: "A realm forged in blood. A crown claimed in fire. Enter the cinematic world of Elden Sovereign." },
+      { title: "Chronicles of the Realm — Legends of the Realm" },
+      { name: "description", content: "An epic cinematic fantasy saga of dragons, kingdoms, and shattered crowns. Enter the realm of Chronicles of the Realm." },
+      { name: "author", content: "Chronicles of the Realm Studios" },
+      { property: "og:title", content: "Chronicles of the Realm — Epic Fantasy Saga" },
+      { property: "og:description", content: "A realm forged in blood. A crown claimed in fire. Enter the cinematic world of Chronicles of the Realm." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

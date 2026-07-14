@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -323,3 +322,24 @@
 ::-webkit-scrollbar-track { background: var(--obsidian); }
 ::-webkit-scrollbar-thumb { background: oklch(0.28 0.02 60); }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+@keyframes bounce-bar-1 {
+  0% { transform: scaleY(0.25); }
+  100% { transform: scaleY(1); }
+}
+@keyframes bounce-bar-2 {
+  0% { transform: scaleY(0.45); }
+  100% { transform: scaleY(1); }
+}
+@keyframes bounce-bar-3 {
+  0% { transform: scaleY(0.15); }
+  100% { transform: scaleY(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.92) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
